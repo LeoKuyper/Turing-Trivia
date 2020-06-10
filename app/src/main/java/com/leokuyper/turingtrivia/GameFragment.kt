@@ -52,7 +52,7 @@ class GameFragment : Fragment() {
             if (viewModel.currentQuestion.value!! < viewModel.amountOfQuestions.value!! - 1){
                 viewModel.updateQuestion(viewModel.currentQuestion.value ?: 0)
             } else {
-                if (viewModel.score.value!! == viewModel.amountOfQuestions.value!! - 1){
+                if (viewModel.score.value!! == viewModel.amountOfQuestions.value!!){
                     view.findNavController().navigate(R.id.action_gameFragment_to_gameWonFragment)
                 }else{
                     view.findNavController().navigate(R.id.action_gameFragment_to_gameLostFragment)

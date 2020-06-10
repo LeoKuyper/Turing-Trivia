@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.DataBindingUtil.inflate
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.leokuyper.turingtrivia.databinding.FragmentHomeBinding
 import com.leokuyper.turingtrivia.databinding.FragmentTitleBinding
@@ -34,24 +35,17 @@ class HomeFragment : Fragment(), OnCategoryCLickListener {
         binding.startGame.setOnClickListener(
             Navigation.createNavigateOnClickListener(R.id.action_homeFragment_to_gameFragment)
         )
-        val categoryList = generateDummyList(10)
+        val categoryList = viewModel.generateDummyList(3)
         binding.categoryList.adapter = CategoryAdapter(categoryList, this)
         binding.categoryList.layoutManager = LinearLayoutManager(context)
         binding.categoryList.setHasFixedSize(true)
         return  binding.root
     }
 
-    private  fun generateDummyList(size: Int): List<CategoryItem> {
-        val list = ArrayList<CategoryItem>()
-        for (i in 1 until size){
-            val item = CategoryItem(i,"Category $i")
-            list += item
-        }
-        return list
-    }
-
     override fun onCategoryClick(category: CategoryItem, position: Int, view: View) {
         Toast.makeText(context, "Category ${category.text} with id ${category.id}", Toast.LENGTH_SHORT).show()
+        viewModel.setupGame(category.id)
+        view.findNavController().navigate(R.id.action_homeFragment_to_gameFragment)
     }
 
 }
