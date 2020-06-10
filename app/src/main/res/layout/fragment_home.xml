@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".HomeFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <fragment
+            android:id="@+id/gameBackground"
+            class="com.leokuyper.turingtrivia.BackgroundFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="44dp"
+            android:layout_marginBottom="284dp"
+            android:text="@string/turing_trivia"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="50sp"
+            android:textStyle="normal|bold"
+            app:layout_constraintBottom_toTopOf="@+id/startGame"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageButton
+            android:id="@+id/startGame"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+
+            android:background="#00FFFFFF"
+            android:contentDescription="@string/playbutton"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.926"
+            app:srcCompat="@drawable/play_buttonmdpi" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/categoryList"
+            android:layout_width="229dp"
+            android:layout_height="179dp"
+            android:layout_marginBottom="32dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:layout_constraintVertical_bias="0.391"
+            tools:listitem="@layout/category_item" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
