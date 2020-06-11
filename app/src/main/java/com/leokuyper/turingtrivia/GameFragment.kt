@@ -46,12 +46,12 @@ class GameFragment : Fragment() {
         binding.submitbutton.setOnClickListener{ view : View ->
             val id = binding.radioGroup2.checkedRadioButtonId
             viewModel.checkQuestion(id)
-            Toast.makeText(context, "The current Id $id", Toast.LENGTH_SHORT ).show()
+//            Toast.makeText(context, "The current Id $id", Toast.LENGTH_SHORT ).show()
 
             if (viewModel.currentQuestion.value!! < viewModel.amountOfQuestions.value!! - 1){
                 viewModel.updateQuestion(viewModel.currentQuestion.value ?: 0)
             } else {
-                if (viewModel.score.value!! == viewModel.amountOfQuestions.value!!){
+                if (viewModel.score.value!! >= 30){
                     view.findNavController().navigate(R.id.action_gameFragment_to_gameWonFragment)
                 }else{
                     view.findNavController().navigate(R.id.action_gameFragment_to_gameLostFragment)
