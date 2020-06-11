@@ -12,6 +12,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.leokuyper.turingtrivia.data.Question
 import com.leokuyper.turingtrivia.databinding.FragmentHomeBinding
 import com.leokuyper.turingtrivia.databinding.FragmentTitleBinding
 
@@ -32,11 +33,12 @@ class HomeFragment : Fragment(), OnCategoryCLickListener {
     ): View? {
 
         val binding: FragmentHomeBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
-        binding.startGame.setOnClickListener(
-            Navigation.createNavigateOnClickListener(R.id.action_homeFragment_to_gameFragment)
-        )
+//        binding.startGame.setOnClickListener(
+//            Navigation.createNavigateOnClickListener(R.id.action_homeFragment_to_gameFragment)
+//        )
         val categoryList = viewModel.generateDummyList(3)
-        binding.categoryList.adapter = CategoryAdapter(categoryList, this)
+
+        binding.categoryList.adapter = CategoryAdapter(viewModel.categories, this)
         binding.categoryList.layoutManager = LinearLayoutManager(context)
         binding.categoryList.setHasFixedSize(true)
         return  binding.root

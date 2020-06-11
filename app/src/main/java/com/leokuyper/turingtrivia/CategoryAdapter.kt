@@ -1,16 +1,18 @@
 package com.leokuyper.turingtrivia
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.leokuyper.turingtrivia.data.DataModel
 import kotlinx.android.synthetic.main.category_item.view.*
 import kotlinx.android.synthetic.main.fragment_game.view.*
 
 class CategoryAdapter(
     private val categoryList: List<CategoryItem>,
-var cClickListener:OnCategoryCLickListener
+    var cClickListener:OnCategoryCLickListener
 ) : RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -23,6 +25,7 @@ var cClickListener:OnCategoryCLickListener
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentItem = categoryList[position]
 //        holder.textView.text = currentItem.text
+
         holder.initialiser(categoryList.get(position), cClickListener)
     }
 

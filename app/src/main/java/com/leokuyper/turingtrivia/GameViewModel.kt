@@ -1,9 +1,15 @@
 package com.leokuyper.turingtrivia
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.leokuyper.turingtrivia.data.DataModel
 import com.leokuyper.turingtrivia.data.Question
+import com.leokuyper.turingtrivia.retrofit.ApiClient
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class GameViewModel : ViewModel(){
 
@@ -21,6 +27,7 @@ class GameViewModel : ViewModel(){
 //    }
 
     fun setupGame(categoryId: Int){
+
         val newQuestions = questions.filter { question -> question.categoryId == categoryId }
         _categoryQuestions.postValue(newQuestions)
         _question.value = newQuestions[0]
@@ -75,4 +82,30 @@ class GameViewModel : ViewModel(){
         return list
     }
 
+    val categories = listOf(
+        CategoryItem(1, "History")
+    )
+
+    fun getDataApi() {
+        val call: Call<List<DataModel>> = ApiClient.getClient.getCategory()
+        println("Test TEst!! Top")
+
+        println(ApiClient.getClient.getCategory())
+
+        call.enqueue(object : Callback<List<DataModel>> {
+
+            override fun onResponse(call: Call<List<DataModel>>?, response: Response<List<DataModel>>?) {
+                println("Test TEst!!")
+                println(response)
+            }
+
+            override fun onFailure(call: Call<List<DataModel>>?, t: Throwable?) {
+                println("Test onFailure")
+            }
+
+        })
+    }
+
 }
+
+

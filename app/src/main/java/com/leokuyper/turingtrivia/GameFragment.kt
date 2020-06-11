@@ -10,7 +10,6 @@ import android.widget.RadioButton
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import com.leokuyper.turingtrivia.databinding.FragmentGameBinding
@@ -73,5 +72,7 @@ class GameFragment : Fragment() {
         rdb.id = id
         return rdb
     }
+
+
 
 }

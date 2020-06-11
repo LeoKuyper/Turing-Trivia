@@ -39,10 +39,18 @@
         android:id="@+id/gameLostFragment"
         android:name="com.leokuyper.turingtrivia.GameLostFragment"
         android:label="fragment_game_lost"
-        tools:layout="@layout/fragment_game_lost" />
+        tools:layout="@layout/fragment_game_lost" >
+        <action
+            android:id="@+id/action_gameLostFragment_to_titleFragment2"
+            app:destination="@id/titleFragment2" />
+    </fragment>
     <fragment
         android:id="@+id/gameWonFragment"
         android:name="com.leokuyper.turingtrivia.GameWonFragment"
         android:label="fragment_game_won"
-        tools:layout="@layout/fragment_game_won" />
+        tools:layout="@layout/fragment_game_won" >
+        <action
+            android:id="@+id/action_gameWonFragment_to_titleFragment2"
+            app:destination="@id/titleFragment2" />
+    </fragment>
 </navigation>
