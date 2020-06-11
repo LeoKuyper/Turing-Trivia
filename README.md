@@ -32,6 +32,8 @@ Allow  gradle to built and install all the needed dependencies.
 
 The development enviroment will now be up and running.  
 
+An API has been partially implemented. But has been deactivated for this demo as I am unable to parse the infromation correctly at this stage.
+
 ## Built With
 
 * [Kotlin](https://kotlinlang.org/) - Language 
